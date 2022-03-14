@@ -30,7 +30,6 @@ class Ball {
     }
 
     bounceY() {
-
         // let hitWall = new Audio("sounds/Hit Wall.mp3");
         // hitWall.play();
         this.yMove *= -1;

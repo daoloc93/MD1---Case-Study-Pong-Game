@@ -23,10 +23,12 @@
     let rightPaddle = new Paddle(770, 250, 10, 100)
     let leftScoreboard = new Scoreboard(360, 50)
     let rightScoreboard = new Scoreboard(420, 50)
-    let hitPaddle = new Audio("sounds/Hit Paddle.mp3");
+    let hitPaddle1 = new Audio("sounds/Hit Paddle 1.mp3");
+    let hitPaddle2 = new Audio("sounds/Hit Paddle 2.mp3");
     let hitWall = new Audio("sounds/Hit Wall.mp3");
     let serve = new Audio("sounds/Serve.mp3");
 
+    serve.play();
     function move() {
 
         pen.clearRect(0, 0, canvas.width, canvas.height);
@@ -45,7 +47,8 @@
 
         if (((ball.y > leftPaddle.y && ball.y < (leftPaddle.y + leftPaddle.height)) && ball.x < 40) ||
             ((ball.y > rightPaddle.y && ball.y < (rightPaddle.y + rightPaddle.height)) && ball.x > 760)) {
-            hitPaddle.play();
+            hitPaddle1.play();
+            hitPaddle2.play();
             ball.bounceX()
         }
 
