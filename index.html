@@ -23,6 +23,9 @@
     let rightPaddle = new Paddle(770, 250, 10, 100)
     let leftScoreboard = new Scoreboard(360, 50)
     let rightScoreboard = new Scoreboard(420, 50)
+    let hitPaddle = new Audio("sounds/Hit Paddle.mp3");
+    let hitWall = new Audio("sounds/Hit Wall.mp3");
+    let serve = new Audio("sounds/Serve.mp3");
 
     function move() {
 
@@ -36,20 +39,24 @@
         ball.moveBall();
 
         if (ball.y >= 590 || ball.y <= 10) {
+            hitWall.play();
             ball.bounceY()
         }
 
         if (((ball.y > leftPaddle.y && ball.y < (leftPaddle.y + leftPaddle.height)) && ball.x < 40) ||
             ((ball.y > rightPaddle.y && ball.y < (rightPaddle.y + rightPaddle.height)) && ball.x > 760)) {
+            hitPaddle.play();
             ball.bounceX()
         }
 
         ball.increaseSpeed()
 
         if (ball.x > 800) {
+            serve.play();
             leftScoreboard.score++;
             ball.resetPosition();
         } else if (ball.x < 0) {
+            serve.play();
             rightScoreboard.score++;
             ball.resetPosition();
         }

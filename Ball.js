@@ -21,11 +21,18 @@ class Ball {
     }
 
     moveBall() {
+        // let hit = new Audio("sounds/hit.mp3");
+        // hit.play();
+        // let serve = new Audio("sounds/Serve.mp3");
+        // serve.play();
         this.x += this.xMove;
         this.y += this.yMove;
     }
 
     bounceY() {
+
+        // let hitWall = new Audio("sounds/Hit Wall.mp3");
+        // hitWall.play();
         this.yMove *= -1;
     }
 
