@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Ball.js"></script>
+    <script src="Paddle.js"></script>
+    <script src="Scoreboard.js"></script>
+</head>
+<body>
+
+<h1>
+    <canvas id="myCanvas" width="800px" height="600px" style="background-color: midnightblue"></canvas>
+</h1>
+
+<script>
+
+    let canvas = document.getElementById("myCanvas");
+    let pen = canvas.getContext("2d");
+
+    let ball = new Ball(390, 300);
+    let leftPaddle = new Paddle(20, 250, 10, 100)
+    let rightPaddle = new Paddle(770, 250, 10, 100)
+    let leftScoreboard = new Scoreboard(360, 50)
+    let rightScoreboard = new Scoreboard(420, 50)
+
+    function move() {
+
+        pen.clearRect(0, 0, canvas.width, canvas.height);
+        ball.moveBall();
+        leftPaddle.render(canvas);
+        rightPaddle.render(canvas);
+        ball.render(canvas);
+        leftScoreboard.render(canvas)
+        rightScoreboard.render(canvas)
+
+        if (ball.y >= 590 || ball.y <= 10) {
+            ball.bounceY()
+        }
+
+        if (((ball.y > leftPaddle.y && ball.y < (leftPaddle.y + leftPaddle.height)) && ball.x < 40) ||
+            ((ball.y > rightPaddle.y && ball.y < (rightPaddle.y + rightPaddle.height)) && ball.x > 760)) {
+            ball.bounceX()
+        }
+
+        if ((ball.x == 90 && ball.xMove < 10 && ball.yMove < 10) ||
+            (ball.x == 720 && ball.xMove < 10 && ball.yMove < 10)) {
+            ball.increaseSpeed();
+        }
+
+
+        if (ball.x > 800) {
+            leftScoreboard.score++;
+            ball.resetPosition();
+        } else if (ball.x < 0) {
+            rightScoreboard.score++;
+            ball.resetPosition();
+        }
+
+        requestAnimationFrame(move)
+    }
+
+    move();
+
+    window.addEventListener("keydown", movePlayer);
+
+    function movePlayer(event) {
+        switch (event.key) {
+
+            case "ArrowUp":
+                rightPaddle.goUp()
+                break;
+
+            case "ArrowDown":
+                rightPaddle.goDown()
+                break;
+
+            case "w":
+                leftPaddle.goUp()
+                break;
+
+            case "s":
+                leftPaddle.goDown()
+                break;
+        }
+    }
+
+</script>
+
+</body>
+</html>
