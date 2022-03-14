@@ -35,12 +35,12 @@ class Ball {
     }
 
     increaseSpeed() {
-        if (this.count % 2 == 0) {
+        if (this.x == 90 && this.count % 2 == 0 && (this.xMove < 6 && this.yMove < 6)) {
             this.xMove++;
             this.yMove++;
-        } else {
-            this.xMove --;
-            this.yMove --;
+        } else if (this.x == 690 && this.count % 2 != 0 && (this.xMove > -6 && this.yMove > -6)) {
+            this.xMove--;
+            this.yMove--;
         }
     }
 

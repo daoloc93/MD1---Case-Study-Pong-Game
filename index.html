@@ -27,12 +27,13 @@
     function move() {
 
         pen.clearRect(0, 0, canvas.width, canvas.height);
-        ball.moveBall();
         leftPaddle.render(canvas);
         rightPaddle.render(canvas);
         ball.render(canvas);
-        leftScoreboard.render(canvas)
-        rightScoreboard.render(canvas)
+        leftScoreboard.render(canvas);
+        rightScoreboard.render(canvas);
+
+        ball.moveBall();
 
         if (ball.y >= 590 || ball.y <= 10) {
             ball.bounceY()
@@ -43,11 +44,7 @@
             ball.bounceX()
         }
 
-        if ((ball.x == 90 && ball.xMove < 10 && ball.yMove < 10) ||
-            (ball.x == 720 && ball.xMove < 10 && ball.yMove < 10)) {
-            ball.increaseSpeed();
-        }
-
+        ball.increaseSpeed()
 
         if (ball.x > 800) {
             leftScoreboard.score++;
