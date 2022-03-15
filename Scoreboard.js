@@ -7,7 +7,7 @@ class Scoreboard {
 
     render(canvas) {
         let pen = canvas.getContext("2d");
-        pen.font = "36px Impact";
+        pen.font = "60px Impact";
         pen.fillStyle = "antiquewhite";
         pen.textAlign = "center";
         pen.fillText(this.score, this.x, this.y);
