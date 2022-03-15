@@ -56,7 +56,6 @@ class Ball {
         this.y = 300;
         this.xMove = 3;
         this.yMove = 3;
-        this.bounceX();
     }
 }
 
