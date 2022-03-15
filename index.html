@@ -6,6 +6,7 @@
     <script src="Ball.js"></script>
     <script src="Paddle.js"></script>
     <script src="Scoreboard.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -26,10 +27,14 @@
     let hitPaddle = new Audio("sounds/Hit Paddle.mp3");
     let hitWall = new Audio("sounds/Hit Wall.mp3");
     let serve = new Audio("sounds/Serve.mp3");
+    let move = new Audio("sounds/Move.mp3")
+    // let background = new Audio("Background/Serve.mp3");
+
+
     serve.play();
 
     function move() {
-
+        // background.play();
         pen.clearRect(0, 0, canvas.width, canvas.height);
         leftPaddle.render(canvas);
         rightPaddle.render(canvas);
@@ -73,18 +78,22 @@
         switch (event.key) {
 
             case "ArrowUp":
+                move.play()
                 rightPaddle.goUp()
                 break;
 
             case "ArrowDown":
+                move.play()
                 rightPaddle.goDown()
                 break;
 
             case "w":
+                move.play()
                 leftPaddle.goUp()
                 break;
 
             case "s":
+                move.play()
                 leftPaddle.goDown()
                 break;
         }
