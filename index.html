@@ -29,7 +29,7 @@
     let hitPaddle = new Audio("sounds/Hit Paddle.mp3");
     let hitWall = new Audio("sounds/Hit Wall.mp3");
     let serve = new Audio("sounds/Serve.mp3");
-    let whoosh = new Audio("sounds/Whoosh.mp3")
+    // let whoosh = new Audio("sounds/Whoosh.mp3")
 
 
     function move() {
@@ -78,22 +78,22 @@
         switch (event.key) {
 
             case "ArrowUp":
-                whoosh.play()
+                // whoosh.play()
                 rightPaddle.goUp()
                 break;
 
             case "ArrowDown":
-                whoosh.play()
+                // whoosh.play()
                 rightPaddle.goDown()
                 break;
 
             case "w":
-                whoosh.play()
+                // whoosh.play()
                 leftPaddle.goUp()
                 break;
 
             case "s":
-                whoosh.play()
+                // whoosh.play()
                 leftPaddle.goDown()
                 break;
         }
