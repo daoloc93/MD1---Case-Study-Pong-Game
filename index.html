@@ -25,17 +25,14 @@
     let leftScoreboard = new Scoreboard(360, 50)
     let rightScoreboard = new Scoreboard(420, 50)
 
+    let background = new Audio("sounds/Background.mp3");
     let hitPaddle = new Audio("sounds/Hit Paddle.mp3");
     let hitWall = new Audio("sounds/Hit Wall.mp3");
     let serve = new Audio("sounds/Serve.mp3");
     let whoosh = new Audio("sounds/Whoosh.mp3")
-    let background = new Audio("sounds/Background.mp3");
-
-    // background.play();
 
 
     function move() {
-        // serve.play();
         background.play();
         pen.clearRect(0, 0, canvas.width, canvas.height);
         leftPaddle.render(canvas);
@@ -51,19 +48,19 @@
             ball.bounceY()
         }
 
-        if (((ball.y > leftPaddle.y && ball.y < (leftPaddle.y + leftPaddle.height)) && ball.x < 40) ||
-            ((ball.y > rightPaddle.y && ball.y < (rightPaddle.y + rightPaddle.height)) && ball.x > 760)) {
+        if (((ball.y > leftPaddle.y - 20 && ball.y < (leftPaddle.y + leftPaddle.height) + 20) && ball.x < 40) ||
+            ((ball.y > rightPaddle.y - 20 && ball.y < (rightPaddle.y + rightPaddle.height) + 20) && ball.x >= 760)) {
             hitPaddle.play();
             ball.bounceX()
         }
 
         ball.increaseSpeed()
 
-        if (ball.x > 800) {
+        if (ball.x > 766) {
             serve.play();
             leftScoreboard.score++;
             ball.resetPosition();
-        } else if (ball.x < 0) {
+        } else if (ball.x < 30) {
             serve.play();
             rightScoreboard.score++;
             ball.resetPosition();
