@@ -24,17 +24,19 @@
     let rightPaddle = new Paddle(770, 250, 10, 100)
     let leftScoreboard = new Scoreboard(360, 50)
     let rightScoreboard = new Scoreboard(420, 50)
+
     let hitPaddle = new Audio("sounds/Hit Paddle.mp3");
     let hitWall = new Audio("sounds/Hit Wall.mp3");
     let serve = new Audio("sounds/Serve.mp3");
     let whoosh = new Audio("sounds/Whoosh.mp3")
-    // let background = new Audio("Background/Serve.mp3");
+    let background = new Audio("sounds/Background.mp3");
 
+    // background.play();
 
-    serve.play();
 
     function move() {
-        // background.play();
+        // serve.play();
+        background.play();
         pen.clearRect(0, 0, canvas.width, canvas.height);
         leftPaddle.render(canvas);
         rightPaddle.render(canvas);
